@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <h2>ログイン画面</h2>
+      
+      <%= form_with model: @user, url: session_path(resource_name), local: true do |f| %>
+              
+        <div class="field mt-10">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", placeholder:"メールアドレス" %>
+        </div>
+      
+        <div class="field mt-10">
+          <%= f.label :パスワード %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off", class:"form-control", placeholder:"パスワード" %>
+        </div>
+      
+        <div class="actions">
+          <%= f.submit "ログイン", class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+        </div>
+      <% end %>
+      <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success btn-lg btn-block mt-20" %>
+    </div>
+  </div>
+</div>

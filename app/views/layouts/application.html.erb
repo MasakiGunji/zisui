@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ZI-SUI</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse">
+    	<div class="container-fluid">
+    		<div class="navbar-header">
+    			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+    				<span class="sr-only">Toggle navigation</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    			</button>
+    			<%= link_to "ZI-SUI", root_path, class:"navbar-brand" %>
+    		</div>
+    		
+    		<div class="collapse navbar-collapse" id="navbarEexample7">
+    		  <% if user_signed_in? %>
+    		    <p class="navbar-text">ようこそ<%= link_to current_user.name, my_page_path %>さん。</p>
+    		    <ul class="nav navbar-nav navbar-right">
+      				<li><%= link_to "マイページ", new_user_registration_path %></li>
+      				<li><%= link_to "マイページ", new_user_registration_path %></li>
+      				<li><%= link_to "ログアウト", new_user_session_path %></li>
+      			</ul>
+    		  <% else %>
+    		    <p class="navbar-text">ようこそ。</p>
+      			<ul class="nav navbar-nav navbar-right">
+      				<li><%= link_to "新規登録", new_user_registration_path %></li>
+      				<li><%= link_to "ログイン", new_user_session_path %></li>
+      			</ul>
+    			<% end %>
+    		</div>
+    	</div>
+    </nav>
+    
+    <%= yield %>
+  </body>
+</html>
