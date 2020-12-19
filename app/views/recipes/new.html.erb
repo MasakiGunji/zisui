@@ -8,7 +8,7 @@
         <%= f.text_field :name, class: "form-control" %>
         <% if @recipe_genres.present? %>
           <h4><%= radio_button_tag :flag, "existing_recipe_genres", checked: "checked" %> ジャンル</h4>
-          <%= f.collection_select :genre_id, RecipeGenre.where(user_id: current_user.id), :id, :name %>
+          <%= f.collection_select :recipe_genre_id, @recipe_genres, :id, :name, { prompt: "選択してください" } %>
           <h4><%= radio_button_tag :flag, "new_recipe_genre" %> 新規ジャンル</h4>
           <%= text_field_tag "recipe_genre_name", "", class: "form-control" %>
         <% else %>
