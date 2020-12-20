@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   has_many:recipes
   has_many:recipe_genres
+  has_many:food_genres
 end

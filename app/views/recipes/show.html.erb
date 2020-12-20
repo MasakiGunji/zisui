@@ -1,2 +1,15 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>レシピ詳細</h1>
+      <%= attachment_image_tag @recipe, :image, :fill, 200, 200 %>
+      <h1>レシピ名</h1>
+      <%= @recipe.name %>
+      <h2>ジャンル名</h2>
+      <%= @recipe.recipe_genre.name %>
+      <h2>作り方</h2>
+      <%= @recipe.body %>
+      <%= link_to "編集する", edit_recipe_path(@recipe), class:'btn btn-default' %>
+    </div>
+  </div>
+</div>
