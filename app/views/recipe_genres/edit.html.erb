@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>ジャンル名を変更する</h1>
+       <%= form_with model: @recipe_genre, url: recipe_genre_path, local: true do |f| %>
+        <%= f.text_field :name, class:"book-title-input" %>
+        <%= f.submit '名前を変更', class:"btn btn-primary" %>
+      <% end %>
+      <%= link_to "削除", recipe_genre_path(@recipe_genre), method: :delete, class:'btn btn-default', "data-confirm" => "本当に削除ますか？" %>
+      <% if @recipe_genre.recipes.present? %>
+        <h2>以下のレシピに影響があります。</h2>
+        <% @recipe_genre.recipes.each do |recipe| %>
+          <%= attachment_image_tag recipe, :image, :fill, 50, 50 %>
+          <%= recipe.name %>
+        <% end %>
+      <% else %>
+        <h2>レシピに影響はありません。</h2>
+      <% end %>
+    </div>
+  </div>
+</div>

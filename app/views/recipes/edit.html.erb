@@ -1,2 +1,26 @@
-<h1>Recipes#edit</h1>
-<p>Find me in app/views/recipes/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>レシピ編集</h1>
+        <%= form_with model: @recipe, url: recipe_path, local: true do |f| %>
+        <%= attachment_image_tag @recipe, :image, :fill, 200, 200 %>
+        <%= f.attachment_field :image %>
+        <h1>レシピ名</h1>
+        <%= f.text_field :name, class: "form-control" %>
+        <% if @recipe_genres.present? %>
+          <h4><%= radio_button_tag :flag, "existing_recipe_genres", checked: "checked" %> ジャンル</h4>
+          <%= f.collection_select :recipe_genre_id, @recipe_genres, :id, :name, { prompt: "選択してください" } %>
+          <h4><%= radio_button_tag :flag, "new_recipe_genre" %> 新規ジャンル</h4>
+          <%= text_field_tag "recipe_genre_name", "", class: "form-control" %>
+        <% else %>
+          <h1>新規ジャンル</h1>
+          <%= text_field_tag "recipe_genre_name", "", class: "form-control" %>
+        <% end %>
+        <h1>作り方</h1>
+        <%= f.text_area :body, class: "form-control" %>
+        </br><%= f.submit 'レシピを更新', class:"btn btn-primary" %>
+        <% end %>
+        <p><%= link_to "削除", recipe_path(@recipe), method: :delete, class:'btn btn-default', "data-confirm" => "本当に削除ますか？" %></p>
+    </div>
+  </div>
+</div>

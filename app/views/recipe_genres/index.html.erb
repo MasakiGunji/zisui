@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>ジャンル追加</h1>
+      <%= form_with model: @recipe_genre, url: recipe_genres_path, local: true do |f| %>
+      <%= f.text_field :name, class: "form-control" %>
+      </br><%= f.submit 'ジャンルを追加', class:"btn btn-primary" %>
+      <% end %>
+      <h1>ジャンル一覧</h1>
+      <% @recipe_genres.each do |recipe_genre| %>
+        <h3><%= recipe_genre.name %></h3>
+        <%= link_to "名前を変更", edit_recipe_genre_path(recipe_genre) %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
